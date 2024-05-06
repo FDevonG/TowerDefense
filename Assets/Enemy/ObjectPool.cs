@@ -5,10 +5,10 @@ using UnityEngine;
 public class ObjectPool : MonoBehaviour
 {
     [Tooltip("Instantied to attack the player")][SerializeField] GameObject batteringRam;
-    [Tooltip("Used to determine how big the enemy pool size is")][SerializeField] int poolSize = 5;
-    [Tooltip("Used to determine how often the enemies are spawned")][SerializeField] float spawnTimer = 1;
+    [Tooltip("Used to determine how big the enemy pool size is")][SerializeField] [Range(0, 50)] int poolSize = 5;
+    [Tooltip("Used to determine how often the enemies are spawned")][SerializeField] [Range(0.1f, 30f)] float spawnTimer = 1;
 
-    public List<GameObject> EnemyPool{ get; private set; }
+    GameObject[] enemyPool;
 
     void Awake()
     {
@@ -22,21 +22,22 @@ public class ObjectPool : MonoBehaviour
 
     void BuildObjectPool()
     {
-        EnemyPool = new List<GameObject>();
-        for (int i = 0; i < poolSize; i++)
+        Debug.Log("Building Pool");
+        enemyPool = new GameObject[poolSize];
+        for (int i = 0; i < enemyPool.Length; i++)
         {
-           EnemyPool.Add(Instantiate(batteringRam, transform));
-           EnemyPool[i].SetActive(false);
+           enemyPool[i] = Instantiate(batteringRam, transform);
+           enemyPool[i].SetActive(false);
         }
     }
 
     void EnablePoolObject()
     {
-        for (int i = 0; i < EnemyPool.Count; i++)
+        for (int i = 0; i < enemyPool.Length; i++)
         {
-            if(!EnemyPool[i].activeInHierarchy)
+            if(!enemyPool[i].activeInHierarchy)
             {
-                EnemyPool[i].SetActive(true);
+                enemyPool[i].SetActive(true);
                 return;
             }
         }

@@ -6,6 +6,7 @@ using System;
 using UnityEngine.UI;
 
 [ExecuteAlways]
+[RequireComponent(typeof(TextMeshPro))]
 public class CoordinateLabler : MonoBehaviour
 {
     [SerializeField] Color defaultColor = Color.white;
@@ -18,7 +19,7 @@ public class CoordinateLabler : MonoBehaviour
     void Awake(){
         label = GetComponent<TMP_Text>();
         label.enabled = false;
-        
+
         DisplayCoordinates();
         waypoint = GetComponentInParent<Waypoint>();
     }
@@ -29,8 +30,9 @@ public class CoordinateLabler : MonoBehaviour
         {
             DisplayCoordinates();
             UpdateTileName();
+            label.enabled = true;
         }
-        ColorCoordinates();
+        SetLabelColor();
         if(Input.GetKeyDown(KeyCode.C))
             ToggleCoordinates();
     }
@@ -48,7 +50,7 @@ public class CoordinateLabler : MonoBehaviour
         transform.parent.name = coordinates.ToString();
     }
 
-    private void ColorCoordinates()
+    private void SetLabelColor()
     {
         if(waypoint.IsPlaceable)
         {

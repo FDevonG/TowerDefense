@@ -2,14 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Enemy))]
 public class EnemyHealth : MonoBehaviour
 {
-    [SerializeField] int defaultHealthPoints = 5;
+    [SerializeField] int maxHealthPoints = 5;
+    [Tooltip("Used to increase the max hit points every time they die")]
+    [SerializeField] int difficultyRamp = 1;
+
+    Enemy enemy;
+
     public int HealthPoints { get; private set; }
     
+    void Awake()
+    {
+        enemy = GetComponent<Enemy>();
+    }
+
     void OnEnable()
     {
-        HealthPoints = defaultHealthPoints;
+        HealthPoints = maxHealthPoints;
     }
 
     public void ProcessHit()
@@ -17,7 +28,8 @@ public class EnemyHealth : MonoBehaviour
         HealthPoints--;
         if (HealthPoints <= 0)
         {
-            GetComponent<Enemy>().RewardGold();
+            enemy.RewardGold();
+            maxHealthPoints += difficultyRamp;
             gameObject.SetActive(false);
         }
     }

@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3418890164496886006}
   - component: {fileID: 8280101534800193283}
+  - component: {fileID: 9007973631696973705}
   m_Layer: 0
   m_Name: Balista
   m_TagString: Untagged
@@ -50,6 +51,19 @@ MonoBehaviour:
   range: 15
   projectiles: {fileID: 6713259387314727141}
   target: {fileID: 0}
+--- !u!114 &9007973631696973705
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6083889942188758702}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2c09c50b3a454f9481ddc4b28471ca5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  costOfTower: 50
 --- !u!1 &8916914544800268063
 GameObject:
   m_ObjectHideFlags: 0
@@ -156,7 +170,7 @@ ParticleSystem:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-  moveWithTransform: 0
+  moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
   randomSeed: 0

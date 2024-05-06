@@ -2,10 +2,13 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Bank : MonoBehaviour
 {
     [SerializeField] int startingBalance = 150;
+
+    TextMeshProUGUI goldtext;
 
     int currentBalance;
     public int CurrentBalance
@@ -23,11 +26,14 @@ public class Bank : MonoBehaviour
     void Awake()
     {
         CurrentBalance = startingBalance;
+        goldtext = GameObject.Find("GoldUI").GetComponent<TextMeshProUGUI>();
+        DisplayBalance();
     }
 
     public void Deposit(int amount)
     {
         CurrentBalance += (int)MathF.Abs(amount);
+        DisplayBalance();
     }
 
     public void Withdraw(int amount)
@@ -35,6 +41,12 @@ public class Bank : MonoBehaviour
         if(CurrentBalance >= amount)
         {
             CurrentBalance -= (int)MathF.Abs(amount);
+            DisplayBalance();
         }
+    }
+
+    void DisplayBalance()
+    {
+        goldtext.text = $"Gold: {CurrentBalance}";
     }
 }
