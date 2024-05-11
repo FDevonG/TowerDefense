@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2755416617932032885}
   - component: {fileID: 3383778962736488131}
+  - component: {fileID: 615747353633820511}
   m_Layer: 0
   m_Name: ObjectPool
   m_TagString: Untagged
@@ -47,3 +48,17 @@ MonoBehaviour:
   batteringRam: {fileID: 1526441961808645994, guid: 06200ca02824f417ea320f4096c29c8a, type: 3}
   poolSize: 5
   spawnTimer: 1
+--- !u!114 &615747353633820511
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7097553295964721252}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f49437422d8d43b48d36f1ef7470a06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startCoordinates: {x: 0, y: 0}
+  destinationCoordinates: {x: 0, y: 0}

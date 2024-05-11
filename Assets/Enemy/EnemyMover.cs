@@ -6,41 +6,50 @@ using UnityEngine;
 [RequireComponent(typeof(Enemy))]
 public class EnemyMover : MonoBehaviour
 {
-    public List<Waypoint> path = new List<Waypoint>();
+    public List<Node> path = new List<Node>();
     [SerializeField] [Range(0f, 5f)] float speed = 1f;
+
+    Pathfinder pathfinder;
+    GridManager gridManager;
 
     Enemy enemy;
 
     void Awake()
     {
         enemy = GetComponent<Enemy>();
+        pathfinder = FindObjectOfType<Pathfinder>();
+        gridManager = FindObjectOfType<GridManager>();
     }
 
     void OnEnable()
     {
-        FindPath();
         ReturnToStart();
-        StartCoroutine(FollowWaypoints());
+        RecalculatePath(true);
+        
     }
 
-    void FindPath()
+    void RecalculatePath(bool resetPath)
     {
-        path.Clear();
+        Vector2Int coordinates;
 
-        Transform pathTiles = GameObject.Find("PathTiles").transform;
-        foreach(Transform child in pathTiles)
+        if (resetPath)
         {
-            Waypoint waypoint = child.GetComponent<Waypoint>();
-            if(waypoint != null)
-            {
-                path.Add(child.GetComponent<Waypoint>());
-            }
+            coordinates = pathfinder.StartCoordinates;
+        } 
+        else
+        {
+            coordinates = gridManager.GetCoordinatesFromPosition(transform.position);
         }
+        
+        StopAllCoroutines();
+        path.Clear();
+        path = pathfinder.GetNewPath(coordinates);
+        StartCoroutine(FollowWaypoints());
     }
 
     void ReturnToStart()
     {
-        transform.position = path[0].transform.position;
+        transform.position = gridManager.GetPositionFromCoordinates(pathfinder.StartCoordinates);
     }
 
     void FinishPath()
@@ -53,9 +62,9 @@ public class EnemyMover : MonoBehaviour
     {
         for(int i = 1; i < path.Count; i++) 
         {
-            Waypoint waypoint = path[i];
+            Vector3 waypoint = gridManager.GetPositionFromCoordinates(path[i].coordinates);
             Vector3 startPosition = transform.position;
-            Vector3 endPosition = waypoint.transform.position;
+            Vector3 endPosition = waypoint;
             float progress = 0f;
             transform.LookAt(endPosition);
 

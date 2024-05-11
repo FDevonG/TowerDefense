@@ -48,7 +48,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weapon: {fileID: 1087927633283225356}
-  range: 15
+  range: 25
   projectiles: {fileID: 6713259387314727141}
   target: {fileID: 0}
 --- !u!114 &9007973631696973705
@@ -63,7 +63,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2c09c50b3a454f9481ddc4b28471ca5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  costOfTower: 50
+  costOfTower: 75
+  buildDelay: 1
 --- !u!1 &8916914544800268063
 GameObject:
   m_ObjectHideFlags: 0
@@ -233,7 +234,7 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 20
+      scalar: 70
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -4946,6 +4947,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ballisa_Top
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 18cfa8e197c1ff74292ed6ff0cc8b3f7, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1151388028547126963, guid: 18cfa8e197c1ff74292ed6ff0cc8b3f7, type: 3}
       propertyPath: m_LocalScale.x
       value: 6.25
@@ -5030,6 +5035,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: af50c4e21f0e9b9419ff00e3c39e7711, type: 3}
       propertyPath: m_Name
       value: Ballisa_Base
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: af50c4e21f0e9b9419ff00e3c39e7711, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1151388028547126963, guid: af50c4e21f0e9b9419ff00e3c39e7711, type: 3}
       propertyPath: m_LocalScale.x

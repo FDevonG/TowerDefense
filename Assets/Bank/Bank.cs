@@ -3,10 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class Bank : MonoBehaviour
 {
-    [SerializeField] int startingBalance = 150;
+    [SerializeField] int startingBalance = 100;
 
     TextMeshProUGUI goldtext;
 
@@ -42,6 +43,10 @@ public class Bank : MonoBehaviour
         {
             CurrentBalance -= (int)MathF.Abs(amount);
             DisplayBalance();
+            if(CurrentBalance <= 0)
+            {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            }
         }
     }
 

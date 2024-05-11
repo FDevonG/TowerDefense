@@ -22,7 +22,6 @@ public class ObjectPool : MonoBehaviour
 
     void BuildObjectPool()
     {
-        Debug.Log("Building Pool");
         enemyPool = new GameObject[poolSize];
         for (int i = 0; i < enemyPool.Length; i++)
         {

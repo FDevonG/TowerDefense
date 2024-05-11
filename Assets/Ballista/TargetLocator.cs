@@ -7,7 +7,7 @@ using UnityEngine;
 public class TargetLocator : MonoBehaviour
 {
     [SerializeField] Transform weapon;
-    [SerializeField] float range = 15f;
+    [SerializeField] float range = 25f;
     [SerializeField] ParticleSystem projectiles;
     [SerializeField] Transform target;
 

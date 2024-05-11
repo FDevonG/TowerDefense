@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
+[System.Serializable]
 public class Node 
 {
     public Vector2Int coordinates;
     public bool isWalkable;
     public bool isExplored;
+    public bool isPath;
     public bool isConnected;
     public Node connectedTo;
 

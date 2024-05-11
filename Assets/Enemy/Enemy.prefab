@@ -83,7 +83,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2acddae4815614575b9d2bd3de3263d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultHealthPoints: 5
+  maxHealthPoints: 5
+  difficultyRamp: 1
 --- !u!114 &1650321621107822863
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -96,6 +97,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20e7a21d7d1224d8499a70ce039c01a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  goldReward: 25
+  goldPenalty: 25
 --- !u!1 &2481409780079256300
 GameObject:
   m_ObjectHideFlags: 0
